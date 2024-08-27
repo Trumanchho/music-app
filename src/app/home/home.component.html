@@ -1,0 +1,18 @@
+
+<app-loading-screen *ngIf="wait"></app-loading-screen>
+
+<div id="display">
+    <h1>Bookshelf</h1>
+    <div id="log">
+        <p *ngIf="loggedIn">Logged in as: {{currentUser.email}}</p>
+        <button *ngIf="loggedIn" id="logout" (click)="logout()" >Log Out</button>
+    </div>
+    <div id="search-bar">
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" placeholder="Book Name" [(ngModel)]="query" >
+    </div>
+    <div id="bookshelf">
+        <app-book *ngFor="let b of books | search:query" [book]="b.name" [bookUrl]="b.imageUrl"></app-book>
+    </div>
+</div>
+

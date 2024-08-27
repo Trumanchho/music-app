@@ -1,0 +1,8 @@
+<div id="pop-up">
+    <h1>Access Restricted</h1>
+    <span [innerHTML]="message"></span>
+    <div id="buttons">
+        <button id="home" (click)="goToBooks()">Home</button>
+        <button id="login" *ngIf="!loggedIn" (click)="goToLogin()">Log In</button>
+    </div>
+</div>

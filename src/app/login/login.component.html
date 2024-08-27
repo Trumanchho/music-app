@@ -1,0 +1,23 @@
+
+
+<form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+>
+    <legend>Log In to <b>Hymn Player</b></legend>
+    <div class="row">
+        <label for="email">Email:</label>
+        <input type="email" name="email" formControlName="email" placeholder="Email">
+    </div>
+    <span *ngIf="!emailFound" class="small red">This email does not have an account. Please register.</span>
+    <div class="row">
+        <label for="password">Password:</label>
+        <input type="password" name="password" formControlName="password" placeholder="Password">
+    </div>
+    <span *ngIf="!passwordMatch" class="small red">Email and password do not match.</span>
+    <button 
+        id="submit"
+        [disabled]="!form.valid"
+    >Log In</button>
+    <div class="small">Don't have an account? <a routerLink="/register">Register</a></div>
+</form>

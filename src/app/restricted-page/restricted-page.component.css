@@ -1,0 +1,45 @@
+
+#pop-up {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 50%;
+    top: 0%;
+    left: 35%;
+}
+
+#buttons {
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+#home{
+    color: #585858;
+    background-color: white;
+    border: 2px solid #cecdcd;
+}
+#home:hover {
+    background-color: #cecdcd;
+    color: white;
+}
+#login {
+    background-color: rgb(83, 80, 255);
+    color: white;
+}
+#login:hover {
+    opacity: 60%;
+}
+
+button {
+    transition-duration: 0.3s;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 10px;
+}
+button:hover {
+    cursor: pointer;
+}

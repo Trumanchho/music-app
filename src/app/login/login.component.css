@@ -1,0 +1,50 @@
+form {
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+form > div, button {
+    margin-bottom: 10px;
+}
+legend {
+    font-size: larger;
+    margin-bottom: 20px;
+}
+input{
+    width: 50%;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+}
+span { margin-bottom: 10px; }
+button {
+    transition-duration: 0.3s;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 10px;
+    background-color: rgb(83, 80, 255);
+    color: white;
+}
+button:hover {
+    cursor: pointer;
+    opacity: 60%;
+}
+button:disabled {
+    cursor: default;
+    opacity: 60%;
+}
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.small {
+    font-size: small;
+}
+.red {
+    color: red;
+}

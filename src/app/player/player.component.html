@@ -1,0 +1,64 @@
+<app-loading-screen *ngIf="wait"></app-loading-screen>
+<app-restricted-page *ngIf="(!loggedIn || !verified) && !wait"></app-restricted-page>
+<div class="center" *ngIf="loggedIn && verified && !wait" >
+    <div id="player">
+        <nav>
+            <div class="circle" (click)="backToHome()">
+                <fa-icon [icon]="faAngleLeft"></fa-icon>
+            </div>
+            <span id="book-name">{{ bookName }}</span>
+            <div class="circle" (click)="openCloseList()">
+                <fa-icon [icon]="listIcon"></fa-icon>
+            </div>
+        </nav>
+        <div id="main-content">
+            <div id="image-container">
+                <img src="{{bookImageUrl}}" alt="book cover">
+                <!-- <fa-icon [icon]="faMusic" class="fa-10x"></fa-icon> -->
+            </div>
+            <div id="title">
+                <span>{{ songName | songName }}</span>
+                <span id="page-number">{{ songName | pageNumber }}</span>
+            </div>
+            <div id="actions">
+                <input type="range" value="0" id="slider" (change)="changeSliderPos()" #progress min="0" max="{{ song.duration }}">
+                <div id="song-duration"> 
+                    <span>{{ songCurrentTime | minuteSecond }}</span>
+                    <span>{{ song.duration | minuteSecond }}</span> 
+                </div>
+                <div class="circle skip" (click)="playPrev()">
+                    <fa-icon [icon]="faBackwardStep"></fa-icon>
+                </div>
+                <div class="circle" id="play" (click)="playPause()">
+                    <fa-icon #play [icon]="playIcon" class="fa-2x"></fa-icon>
+                </div>
+                <div class="circle skip" (click)="playNext()">
+                    <fa-icon [icon]="faForwardStep"></fa-icon>
+                </div>
+                <div id="shuffle-options">
+                    <fa-icon [icon]="faShuffle" (click)="shuffleSongs()" [ngClass]="(shuffleOption === 'shuffle') ? 'selected' : 'unselected'" ></fa-icon>
+                    <fa-icon [icon]="faArrowDownAZ" (click)="sortByNameSongs()" [ngClass]="(shuffleOption === 'name') ? 'selected' : 'unselected'" ></fa-icon>
+                    <fa-icon [icon]="faArrowDown19" (click)="sortByPageSongs()" [ngClass]="(shuffleOption === 'page') ? 'selected' : 'unselected'" ></fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="song-list" [ngClass]="listOpened ? 'opened' : 'closed' " >
+        <div id="search-bar">
+            <label for="search">Search:</label>
+            <input type="text" name="search" id="search" placeholder="Name / Page #" [(ngModel)]="query" >
+        </div>
+        <table *ngIf="!hideList">
+            <tr *ngFor="let song of songs | search:query" >
+                <td (click)="goToSong(song.name)">
+                    <span id="song-name">{{ song.name | songName }}</span><span id="light">{{ song.name | pageNumber }}</span> 
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div
+        id="tint"
+        [ngClass]="listOpened ? 'show' : 'hide' " 
+        (click)="onTintClick()"
+    ></div>
+</div>

@@ -1,0 +1,43 @@
+
+
+<!-- <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+>
+    <legend>Register to Hymn Player</legend>
+    Email: <input type="email" name="email" formControlName="email" placeholder="Email"><br>
+    Password: <input type="password" name="password" formControlName="password" placeholder="Password"><br>
+    <span *ngIf="!passwordLength">Password must be at least 8 characters long</span><br>
+    Confirm Password: <input type="password" name="confirm_password" formControlName="confirm_password" placeholder="Password"><br>
+    <span *ngIf="!passwordMatch">Password does not match</span><br>
+    <button 
+        id="submit"
+        [disabled]="!form.valid"
+    >Register</button> <br>
+</form> -->
+
+<form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+>
+    <legend>Register for <b>Hymn Player</b></legend>
+    <div class="row">
+        <label for="email">Email:</label>
+        <input type="email" name="email" formControlName="email" placeholder="Email">
+    </div>
+    <span *ngIf="emailTaken" class="small red">This email has already been registered.</span>
+    <div class="row">
+        <label for="password">Password:</label>
+        <input type="password" name="password" formControlName="password" placeholder="Password">
+    </div>
+    <span *ngIf="!passwordLength" class="small red">Password must be between 8 and 128 characters long.</span>
+    <div class="row">
+        <label for="password">Confirm Password:</label>
+        <input type="password" name="confirm_password" formControlName="confirm_password" placeholder="Password">
+    </div>
+    <span *ngIf="!passwordMatch" class="small red">Password does not match.</span>
+    <button 
+        id="submit"
+        [disabled]="!form.valid"
+    >Register</button>
+</form>
