@@ -108,19 +108,6 @@
             }
           }
         },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "browserTarget": "music-player-app:build:production",
-            "serverTarget": "music-player-app:server:production",
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
