@@ -38,6 +38,7 @@ testem.log
 /typings
 .env
 netlify.toml
+firebase.json
 
 # System files
 .DS_Store

@@ -96,7 +96,7 @@
           }
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "music-player-app:build",
             "serverTarget": "music-player-app:server"
