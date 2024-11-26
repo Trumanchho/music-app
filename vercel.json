@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "music-player-app",
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/api"
+      }
+    ],
+    "functions": {
+      "api/index.js": {
+        "includeFiles": "dist/music-player-app/**"
+      }
+    }
+  }

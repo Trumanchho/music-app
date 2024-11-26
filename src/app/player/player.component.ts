@@ -133,6 +133,7 @@ export class PlayerComponent implements OnDestroy, OnInit {
         this.progress.nativeElement.value = this.song.currentTime
         this.songCurrentTime = this.song.currentTime
         if (this.song.currentTime >= Math.floor(this.song.duration)) {
+          this.progress.nativeElement.value = 0;
           this.playNext()
         }
       },500)

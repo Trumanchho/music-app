@@ -1,0 +1,1 @@
+export default import('../dist/music-player-app/server/main.js').then(module => module.app());
