@@ -1,5 +1,7 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import {Dropbox } from 'dropbox';
+//import {Dropbox } from 'dropbox';
+
+const { Dropbox } = require('dropbox');
 
 require('dotenv').config();
 
