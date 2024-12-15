@@ -1,7 +1,7 @@
 // import { VercelRequest, VercelResponse } from '@vercel/node';
 // import {Dropbox } from 'dropbox';
 
-import { VercelRequest, VercelResponse } from "@vercel/node";
+//import { VercelRequest, VercelResponse } from "@vercel/node";
 
 const { VercelRequest, VercelResponse } = require('@vercel/node');
 const { Dropbox } = require('dropbox');
@@ -25,7 +25,7 @@ async function getSongsFrom(name:string) {
     })
 }
 
-module.exports = async function (req:VercelRequest,res:VercelResponse) {
+module.exports = async function (req:any,res:any) {
     let sol1 = []
     let sol2 = []
     let gfh2 = []
