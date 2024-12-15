@@ -27,6 +27,7 @@
     "@angular/ssr": "^18.2.2",
     "@fortawesome/angular-fontawesome": "^0.15.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@vercel/node": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",

@@ -7,10 +7,5 @@
         "source": "/(.*)",
         "destination": "/api"
       }
-    ],
-    "functions": {
-      "api/index.js": {
-        "includeFiles": "dist/music-player-app/**"
-      }
-    }
+    ]
   }
