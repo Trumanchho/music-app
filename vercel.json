@@ -7,8 +7,5 @@
         "source": "/(.*)",
         "destination": "/api"
       }
-    ],
-    "engines": {
-      "node": "18.x"
-    }
+    ]
   }

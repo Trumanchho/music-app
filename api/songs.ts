@@ -1,6 +1,8 @@
 // import { VercelRequest, VercelResponse } from '@vercel/node';
 // import {Dropbox } from 'dropbox';
 
+import { VercelRequest, VercelResponse } from "@vercel/node";
+
 const { VercelRequest, VercelResponse } = require('@vercel/node');
 const { Dropbox } = require('dropbox');
 
@@ -13,17 +15,17 @@ const dbx = new Dropbox({
   fetch
 })
 
-async function getSongsFrom(name) {
+async function getSongsFrom(name:string) {
     let path = "/English Hymnals/" + name
     let data = await dbx.filesListFolder(
         {path:path}
     )
-    return data.result.entries.filter((item)=>{
+    return data.result.entries.filter((item:any)=>{
         return  item['.tag'] === "file"
     })
 }
 
-module.exports = async function (req,res) {
+module.exports = async function (req:VercelRequest,res:VercelResponse) {
     let sol1 = []
     let sol2 = []
     let gfh2 = []
