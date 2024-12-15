@@ -39,7 +39,8 @@
     "tslib": "^2.3.0",
     "util": "^0.12.5",
     "webpack": "^5.94.0",
-    "zone.js": "~0.14.10"
+    "zone.js": "~0.14.10",
+    "typescript": "~5.5.4"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^18.0.1-beta.0",
