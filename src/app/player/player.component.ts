@@ -67,7 +67,7 @@ export class PlayerComponent implements OnDestroy, OnInit {
       this.songs = await this.ss.getSongs(this.bookName)
       this.songs = this.songs.sort((a, b) => 0.5 - Math.random())
       this.songName = this.songs[this.songIndex].name
-      this.filename = await this.http.get('/api/link/' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
+      this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
       this.song = new Audio(this.filename.link)
       this.wait = false
     }
