@@ -11,7 +11,7 @@ const dbx = new Dropbox({
 
 export default async function (req, res) {
     let path = req.query.filepath.replace(/<>/g, '/')
-    console.log(path)
+    //console.log(path)
     let link = await dbx.filesGetTemporaryLink({path: path})
     res.send({link: link.result.link})
 }
