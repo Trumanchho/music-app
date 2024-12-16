@@ -39,7 +39,7 @@ export class RegisterComponent {
         newReg.password = await bcrypt.hash(newReg.password,12)
         let newUser = new User(newReg.email, newReg.password, false)
         this.us.addUser(newUser)
-        this.router.navigate(['/login'])
+        this.router.navigate(['/register/result'])
       } else {
         if (newReg.password.length < 8 || newReg.password.length > 128) {
           this.passwordLength = false

@@ -6,6 +6,7 @@ import { Book } from './Book';
 })
 export class BooksService {
   books:Book[] = []
+  demoBooks:Book[] = []
   constructor() { 
     this.books.push(new Book("All Songs", '/assets/allsongs.jpg'))
     this.books.push(new Book("All Instrumentals", '/assets/allsongs.jpg'))
@@ -22,9 +23,16 @@ export class BooksService {
     this.books.push(new Book("Hymnal Collection 2023 (Instrumental)", '/assets/hymnalcollection.jpg'))
     this.books.push(new Book("Songs of My Heart 1 (Instrumental)", '/assets/SOMH1.jpg'))
     this.books.push(new Book("Hymnal Collection 2024", '')) //need cover image for this
+
+    //DEMO
+    this.demoBooks.push(new Book("All Demo Songs", ''))
+    this.demoBooks.push(new Book("Demo Hymn Instrumentals", ''))
   }
 
   getBook(name:string) :Book {
     return this.books.filter((b) => b.name === name)[0]
+  }
+  getDemoBook(name:string) :Book {
+    return this.demoBooks.filter((b) => b.name === name)[0]
   }
 }

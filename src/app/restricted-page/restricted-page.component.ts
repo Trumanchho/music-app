@@ -13,12 +13,7 @@ export class RestrictedPageComponent implements OnInit {
   constructor(private us:UsersService, private router:Router) {}
 
   ngOnInit(): void {
-    if (!this.us.loggedIn) {
-      this.loggedIn = false
-      this.message = "Please log in to play songs."
-    } else if (!this.us.currentUser.verified) {
-      this.message = "Your account is waiting to be verified. You may need to <b>refresh the page</b> once you are verified. Thank you for your patience."
-    }
+
   }
 
   goToBooks() {

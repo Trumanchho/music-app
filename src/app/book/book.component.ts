@@ -12,9 +12,12 @@ import { Router } from '@angular/router';
 export class BookComponent {
   @Input() book:string = ""
   @Input() bookUrl:string = ""
-  constructor(private ss:SongsService, private router:Router) {}
+  constructor(private ss:SongsService, private router:Router) {
+
+  }
 
   goToPlayer() {
+    console.log(this.book)
     this.router.navigate(["books/player", this.book])
   }
 

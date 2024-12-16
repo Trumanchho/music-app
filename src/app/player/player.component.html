@@ -1,6 +1,6 @@
 <app-loading-screen *ngIf="wait"></app-loading-screen>
-<app-restricted-page *ngIf="(!loggedIn || !verified) && !wait"></app-restricted-page>
-<div class="center" *ngIf="loggedIn && verified && !wait" >
+<!-- <app-restricted-page *ngIf="(!loggedIn || !verified) && !wait"></app-restricted-page> -->
+<div class="center" *ngIf="!wait" >
     <div id="player">
         <nav>
             <div class="circle" (click)="backToHome()">

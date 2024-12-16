@@ -29,13 +29,13 @@ p {
     display: flex;
 }
 
-#logout{
+.logout{
     margin-left: 20px;
     color: #8b8b8b;
     background-color: rgb(241, 241, 241);
     border: 2px solid #cecdcd;
 }
-#logout:hover {
+.logout:hover {
     background-color: #cecdcd;
     color: white;
 }

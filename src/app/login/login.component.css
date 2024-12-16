@@ -48,3 +48,15 @@ button:disabled {
 .red {
     color: red;
 }
+#demo-button {
+    background-color: rgb(165, 164, 164);
+    width: 20%;
+    margin-left: 40%;
+}
+
+@media only screen and (max-width:768px) {
+    #demo-button {
+        width: 50%;
+        margin-left: 25%;
+    }
+}

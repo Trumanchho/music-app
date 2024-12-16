@@ -2,10 +2,11 @@
 <app-loading-screen *ngIf="wait"></app-loading-screen>
 
 <div id="display">
-    <h1>Bookshelf</h1>
+    <h1>{{title}}</h1>
     <div id="log">
         <p *ngIf="loggedIn">Logged in as: {{currentUser.email}}</p>
-        <button *ngIf="loggedIn" id="logout" (click)="logout()" >Log Out</button>
+        <button *ngIf="loggedIn" class="logout" (click)="logout()" >Log Out</button>
+        <button *ngIf="!loggedIn" class="logout" (click)="logout()" >Log In</button>
     </div>
     <div id="search-bar">
         <label for="search">Search:</label>

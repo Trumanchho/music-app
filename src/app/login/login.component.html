@@ -1,5 +1,3 @@
-
-
 <form
     [formGroup]="form"
     (ngSubmit)="onSubmit(form.value)"
@@ -19,5 +17,6 @@
         id="submit"
         [disabled]="!form.valid"
     >Log In</button>
-    <div class="small">Don't have an account? <a routerLink="/register">Register</a></div>
+    <div class="small">Don't have an account? <a routerLink="/register">Register</a> or try the demo.</div><br>
+    <button id="demo-button" routerLink="/books">Try Demo</button>
 </form>

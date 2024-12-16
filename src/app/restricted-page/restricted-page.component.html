@@ -1,8 +1,7 @@
 <div id="pop-up">
-    <h1>Access Restricted</h1>
-    <span [innerHTML]="message"></span>
+    <h1>Registration Complete!</h1><br>
+    <span>Your account is now waiting to be verified. You may need to <b>refresh the page</b> once you are verified. You may use the Demo version while you wait.</span>
     <div id="buttons">
-        <button id="home" (click)="goToBooks()">Home</button>
-        <button id="login" *ngIf="!loggedIn" (click)="goToLogin()">Log In</button>
+        <button id="login" (click)="goToLogin()">Log In</button>
     </div>
 </div>

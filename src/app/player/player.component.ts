@@ -56,32 +56,30 @@ export class PlayerComponent implements OnDestroy, OnInit {
 
     this.loggedIn = this.us.loggedIn
     this.verified = this.us.currentUser.verified
-    this.bookImageUrl =  this.bs.getBook(this.bookName).imageUrl
+    if (this.loggedIn && this.verified) {
+      this.bookImageUrl =  this.bs.getBook(this.bookName).imageUrl
+    } else {
+      this.bookImageUrl = this.bs.getDemoBook(this.bookName).imageUrl
+    }
   }
 
   async ngOnInit(): Promise<void> {
-    console.log("new version")
-    if (!this.loggedIn) {
-      this.router.navigate(['/login'])
-    } else {
-      this.songs = await this.ss.getSongs(this.bookName)
-      this.songs = this.songs.sort((a, b) => 0.5 - Math.random())
-      this.songName = this.songs[this.songIndex].name
-      //console.log('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>'))
-      this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
-      this.song = new Audio(this.filename.link)
-      this.wait = false
-    }
+    //console.log("new version")
+    this.songs = await this.ss.getSongs(this.bookName)
+    this.songs = this.songs.sort((a, b) => 0.5 - Math.random())
+    this.songName = this.songs[this.songIndex].name
+    //console.log('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>'))
+    this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
+    this.song = new Audio(this.filename.link)
+    this.wait = false
   }
 
   ngOnDestroy(): void {
     clearInterval(this.countInterval)
-    if (this.loggedIn) {
-      this.song.pause()
-      this.song.src = ''
-      this.song.load()
-      delete this.song
-    }
+    this.song.pause()
+    this.song.src = ''
+    this.song.load()
+    delete this.song
   }
 
   playPause() {
