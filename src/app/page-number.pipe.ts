@@ -11,7 +11,7 @@ export class PageNumberPipe implements PipeTransform {
     if (page[0] === "0") {
       page = page.slice(1,page.length)
     }
-    return "P. " + page;
+    return page;
   }
 
 }
