@@ -39,6 +39,7 @@ testem.log
 .env
 netlify.toml
 firebase.json
+vercel.json
 
 # System files
 .DS_Store
