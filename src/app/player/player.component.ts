@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrl: './player.component.css'
+  styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnDestroy, OnInit {
   faAngleLeft = faAngleLeft

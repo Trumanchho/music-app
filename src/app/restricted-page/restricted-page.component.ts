@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-restricted-page',
   templateUrl: './restricted-page.component.html',
-  styleUrl: './restricted-page.component.css'
+  styleUrls: ['./restricted-page.component.css']
 })
 export class RestrictedPageComponent implements OnInit { 
   message:string = ''

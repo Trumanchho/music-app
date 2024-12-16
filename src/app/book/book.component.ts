@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrl: './book.component.css'
+  styleUrls: ['./book.component.css']
 })
 export class BookComponent {
   @Input() book:string = ""

@@ -70,10 +70,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "music-player-app:build:production"
+              "browserTarget": "music-player-app:build:production"
             },
             "development": {
-              "buildTarget": "music-player-app:build:development"
+              "browserTarget": "music-player-app:build:development"
             }
           },
           "defaultConfiguration": "development"
