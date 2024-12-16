@@ -10,7 +10,7 @@ const dbx = new Dropbox({
   fetch
 })
 
-async function getSongsFrom(name:string) {
+async function getSongsFrom(name) {
     let path = "/English Hymnals/" + name
     let data = await dbx.filesListFolder(
         {path:path}
@@ -20,7 +20,7 @@ async function getSongsFrom(name:string) {
     })
 }
 
-export default async function (req:VercelRequest, res:VercelResponse) {
+export default async function (req, res) {
     let sol1 = []
     let sol2 = []
     let hc23 = []

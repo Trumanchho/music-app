@@ -15,17 +15,17 @@ const dbx = new Dropbox({
   fetch
 })
 
-async function getSongsFrom(name:string) {
+async function getSongsFrom(name) {
     let path = "/English Hymnals/" + name
     let data = await dbx.filesListFolder(
         {path:path}
     )
-    return data.result.entries.filter((item:any)=>{
+    return data.result.entries.filter((item)=>{
         return  item['.tag'] === "file"
     })
 }
 
-module.exports = async function (req:any,res:any) {
+module.exports = async function (req,res) {
     let sol1 = []
     let sol2 = []
     let gfh2 = []
