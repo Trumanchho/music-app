@@ -1,5 +1,5 @@
-//import { VercelRequest, VercelResponse } from '@vercel/node';
-import {Dropbox } from 'dropbox';
+
+const { Dropbox } = require('dropbox');
 
 require('dotenv').config();
 
@@ -20,7 +20,7 @@ async function getSongsFrom(name) {
     })
 }
 
-export default async function (req, res) {
+module.exports =  async function (req, res) {
     let sol1 = []
     let sol2 = []
     let hc23 = []

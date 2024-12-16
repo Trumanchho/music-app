@@ -1,4 +1,4 @@
-import {Dropbox } from 'dropbox';
+const { Dropbox } = require('dropbox');
 
 require('dotenv').config();
 
@@ -9,7 +9,7 @@ const dbx = new Dropbox({
   fetch
 })
 
-export default async function (req, res) {
+module.exports =  async function (req, res) {
     let path = req.query.filepath.replace(/<>/g, '/')
     //console.log(path)
     let link = await dbx.filesGetTemporaryLink({path: path})
