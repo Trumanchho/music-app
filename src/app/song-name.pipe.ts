@@ -7,7 +7,7 @@ export class SongNamePipe implements PipeTransform {
 
   transform(value:string): string {
     let words:string[] = value.split('-')
-    let songName:string = words[1].replace(".mp3","")
+    let songName:string = words[1].replace(".mp3","").replace(".m4a","")
     return songName;
   }
 
