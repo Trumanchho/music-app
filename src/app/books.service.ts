@@ -25,8 +25,8 @@ export class BooksService {
     this.books.push(new Book("Hymnal Collection 2024", '')) //need cover image for this
 
     //DEMO
-    this.demoBooks.push(new Book("All Demo Songs", ''))
-    this.demoBooks.push(new Book("Demo Hymn Instrumentals", ''))
+    this.demoBooks.push(new Book("All Demo Songs", '/assets/record-player.jpg'))
+    this.demoBooks.push(new Book("Demo Hymn Instrumentals", '/assets/hymnal-open.jpg'))
   }
 
   getBook(name:string) :Book {
