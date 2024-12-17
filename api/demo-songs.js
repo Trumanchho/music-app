@@ -21,6 +21,8 @@ async function getSongsFrom(name) {
 
 module.exports = async function (req,res) {
     let hymninstrumentals = []
+    let guitarcovers = []
     hymninstrumentals = (await getSongsFrom("Hymn Instrumentals"))
-    res.send({hymninstrumentals:hymninstrumentals})
+    guitarcovers = (await getSongsFrom("Guitar Covers"))
+    res.send({hymninstrumentals:hymninstrumentals, guitarcovers:guitarcovers})
 }

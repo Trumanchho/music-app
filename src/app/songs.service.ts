@@ -56,10 +56,13 @@ export class SongsService {
       this.songs = this.instrumentalData['sol2']
     } else if (title === "Hymnal Collection 2024" ) {
       this.songs = this.songData['hc24']
-    } else if (title === "All Demo Songs") {
+    } else if (title === "All Demo Songs") { // DEMO SONGS
       this.songs = this.songs.concat(this.songData['hymninstrumentals'])
+      this.songs = this.songs.concat(this.songData['guitarcovers'])
     } else if (title === "Demo Hymn Instrumentals") {
       this.songs = this.songData['hymninstrumentals']
+    } else if (title === "Guitar Covers") {
+      this.songs = this.songData['guitarcovers']
     }
     return this.songs
   }

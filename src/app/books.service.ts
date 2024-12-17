@@ -27,6 +27,7 @@ export class BooksService {
     //DEMO
     this.demoBooks.push(new Book("All Demo Songs", '/assets/record-player.jpg'))
     this.demoBooks.push(new Book("Demo Hymn Instrumentals", '/assets/hymnal-open.jpg'))
+    this.demoBooks.push(new Book("Guitar Covers", '/assets/guitar-painting-image.jpg'))
   }
 
   getBook(name:string) :Book {
