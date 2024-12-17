@@ -7,9 +7,15 @@
     justify-content: center;
 }
 #light {
+    margin-left: 0px;
+    padding-left: 0px;
     text-align: right;
     font-size: small;
     color: #cecdcd;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    max-width: 60px;
 }
 
 #player {
@@ -33,13 +39,15 @@
     height: 700px;
     margin-top: 50px;
     border-radius: 15px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 #song-name {
-    width: 195px;
+    width: 170px;
     overflow: hidden; 
     white-space: nowrap; 
-    text-overflow: ellipsis;}
+    text-overflow: ellipsis;
+}
 
 #search-bar {
     display: flex;
@@ -70,7 +78,6 @@
 
 table {
     border-collapse: collapse;
-    width: 100%;
 }
 
 td {
@@ -81,7 +88,9 @@ td {
     color: #8b8b8b;
     background-color: rgb(241, 241, 241);
     border-bottom: 2px solid #cecdcd;
+    width: 240px;
 }
+
 td:hover {
     cursor: pointer;
     color: white;
