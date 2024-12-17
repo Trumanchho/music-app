@@ -66,20 +66,31 @@ export class PlayerComponent implements OnDestroy, OnInit {
   async ngOnInit(): Promise<void> {
     //console.log("new version")
     this.songs = await this.ss.getSongs(this.bookName)
-    this.songs = this.songs.sort((a, b) => 0.5 - Math.random())
-    this.songName = this.songs[this.songIndex].name
-    //console.log('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>'))
-    this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
-    this.song = new Audio(this.filename.link)
-    this.wait = false
+    if (this.songs == undefined || this.songs[0] == undefined) {
+      this.router.navigate(["/books"])
+    } else {
+      this.songName = this.songs[this.songIndex].name
+      //console.log('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>'))
+      this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
+      this.song = new Audio(this.filename.link)
+      this.wait = false
+    }
   }
 
   ngOnDestroy(): void {
+    if (this.songs == undefined || this.songs[0] == undefined) {
+      this.router.navigate(["/books"])
+      return
+    }
     clearInterval(this.countInterval)
     this.song.pause()
     this.song.src = ''
     this.song.load()
     delete this.song
+  }
+
+  backToHome() {
+    this.router.navigate(["/books"])
   }
 
   playPause() {
@@ -149,10 +160,6 @@ export class PlayerComponent implements OnDestroy, OnInit {
     this.playIcon = faPause
     this.song.play()
     this.song.currentTime = this.progress.nativeElement.value
-  }
-
-  backToHome() {
-    this.router.navigate(["/books"])
   }
 
   openCloseList() {
