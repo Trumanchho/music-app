@@ -44,14 +44,41 @@
         </div>
     </div>
     <div id="song-list" [ngClass]="listOpened ? 'opened' : 'closed' " >
-        <div id="search-bar">
-            <label for="search">Search:</label>
-            <input type="text" name="search" id="search" placeholder="Name / Page #" [(ngModel)]="query" >
+        <div class="vertical-box">
+            <div id="search-bar" class="horizontal-box">
+                <label for="search">Search:</label>
+                <input type="text" name="search" id="search" placeholder="Name / Page #" [(ngModel)]="query" >
+            </div>
+            <div id="queue-options" class="horizontal-box">
+                <div [ngClass]="(addingToQ) ? 'q-selected' : 'q-unselected'" (click)="addingToQueue()">
+                    Add to Queue
+                </div>
+                <div [ngClass]="(queueOpened) ? 'q-selected' : 'q-unselected'" (click)="openQueue()">
+                    View Queue
+                </div>
+            </div>
         </div>
-        <table *ngIf="!hideList">
+        <table *ngIf="!hideList && !queueOpened && !addingToQ" id="clickable">
             <tr *ngFor="let song of songs | search:query" >
                 <td (click)="goToSong(song.name)">
                     <span id="song-name">{{ song.name | songName }}</span><span id="light">{{ song.name | pageNumber }}</span> 
+                </td>
+            </tr>
+        </table>
+        <table *ngIf="!hideList && queueOpened && !addingToQ">
+            <tr>
+                <td>Current Queue:</td>
+            </tr>
+            <tr *ngFor="let song of queue" >
+                <td>
+                    <span id="song-name">{{ song.name | songName }}</span><fa-icon [icon]="faMinus" (click)="removeSong(song.name)"></fa-icon> 
+                </td>
+            </tr>
+        </table>
+        <table *ngIf="!hideList && !queueOpened && addingToQ">
+            <tr *ngFor="let song of songs | search:query" >
+                <td>
+                    <span id="song-name">{{ song.name | songName }}</span><fa-icon [icon]="faPlus" (click)="enqueueSong(song.name)"></fa-icon> 
                 </td>
             </tr>
         </table>

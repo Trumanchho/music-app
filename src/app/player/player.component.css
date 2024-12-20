@@ -2,9 +2,24 @@
     user-select: none;
 }
 
+fa-icon:hover { 
+    transition-duration: 0.3s;
+    cursor: pointer; 
+}
+
 .center {
     display: flex;
     justify-content: center;
+}
+.horizontal-box {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+}
+.vertical-box {
+    width: 302px;
+    display: flex;
+    flex-direction: column;
 }
 #light {
     margin-left: 0px;
@@ -49,7 +64,7 @@
     text-overflow: ellipsis;
 }
 
-#search-bar {
+#search-bar  {
     display: flex;
     align-items: center;
     padding: 10px 35px;
@@ -68,12 +83,37 @@
     padding: 5px 10px;
 }
 
-#search-bar > input::placeholder {
+#search-bar >input::placeholder {
     color: #cecdcd;
 }
-#search-bar > input:focus {
+#search-bar >input:focus {
     outline: none;
     border: 2px solid #cecdcd;
+}
+#queue-options {
+    margin-left: 20px;
+    height:100%;
+}
+#queue-options > div {
+    transition-duration: 0.3s;
+    font-size: 80%;
+    padding: 5px;
+    border-right: 2px solid #cecdcd;
+    border-bottom: 2px solid #cecdcd;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100%;
+}
+#queue-options > div:hover {cursor: pointer;}
+.q-selected {
+    color: white;
+    background-color: #cecdcd;
+}
+.q-unselected {
+    color: #8b8b8b;
+    background-color: rgb(241, 241, 241);
 }
 
 table {
@@ -88,10 +128,10 @@ td {
     color: #8b8b8b;
     background-color: rgb(241, 241, 241);
     border-bottom: 2px solid #cecdcd;
-    width: 240px;
+    width: 250px;
 }
 
-td:hover {
+#clickable > tr > td:hover{
     cursor: pointer;
     color: white;
     background-color: #cecdcd;
@@ -216,8 +256,6 @@ img {
     background-color: rgb(241, 241, 241);
     justify-content: space-evenly;
 }
-#shuffle-options > * { transition-duration: 0.3s;}
-#shuffle-options > *:hover { cursor: pointer; }
 .selected { color: rgb(152,150,255); }
 .unselected { color: #cecdcd; }
 
@@ -253,6 +291,8 @@ img {
 }
 
 @media only screen and (max-width:768px) {
+    .vertical-box {width: 290px;}
+    #queue-options {margin-left: 0px;}
     nav {
         position: fixed;
         top: 0px;

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {faAngleLeft, faBars, faMusic, faPlay, faForwardStep, faBackwardStep, faPause, faXmark, faShuffle, faArrowDownAZ, faArrowDown19} from '@fortawesome/free-solid-svg-icons'
+import {faAngleLeft, faBars, faMusic, faPlay, faForwardStep, faBackwardStep, faPause, faXmark, faShuffle, faArrowDownAZ, faArrowDown19, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons'
 import { ActivatedRoute, Router } from '@angular/router'
 import { SongsService } from '../songs.service';
 import { BooksService } from '../books.service';
@@ -25,6 +25,8 @@ export class PlayerComponent implements OnDestroy, OnInit {
   faArrowDown19 = faArrowDown19
   listIcon = faBars
   playIcon = faPlay
+  faPlus = faPlus
+  faMinus = faMinus
 
   init:boolean = false
   @ViewChild('progress') progress:any
@@ -34,6 +36,7 @@ export class PlayerComponent implements OnDestroy, OnInit {
   songIndex:number = 0
   songCurrentTime:number = 0
   songs:any[] = []
+  queue:any[] = []
   songName:string = ''
   filename:any
   bookName:string = this.ActivatedRoute.snapshot.params["title"]
@@ -48,6 +51,9 @@ export class PlayerComponent implements OnDestroy, OnInit {
   countInterval:any
   loggedIn:boolean
   verified:boolean
+
+  queueOpened:boolean = false
+  addingToQ:boolean = false
 
   dbx:any
 
@@ -93,6 +99,34 @@ export class PlayerComponent implements OnDestroy, OnInit {
     this.router.navigate(["/books"])
   }
 
+  openQueue() {
+    if (this.addingToQ) {
+      this.addingToQ = false
+    }
+    if (this.queueOpened) {
+      this.queueOpened = false
+    } else {
+      this.queueOpened = true
+    }
+  }
+  addingToQueue() {
+    if (this.queueOpened) {
+      this.queueOpened = false
+    }
+    if (this.addingToQ) {
+      this.addingToQ = false
+    } else {
+      this.addingToQ = true
+    }
+  }
+
+  enqueueSong(songName:string) {
+    this.queue.push(this.songs.find(song=>song.name === songName))
+  }
+  removeSong(songName:string) {
+   this.queue = this.queue.filter(song=>song.name !== songName)
+  }
+
   playPause() {
     if (this.init === false) {
       this.changeSliderPos()
@@ -113,11 +147,18 @@ export class PlayerComponent implements OnDestroy, OnInit {
     this.changeSliderPos()
     this.progress.nativeElement.min = 0
     this.progress.nativeElement.value = 0
-    this.songIndex++
-    this.songIndex %= this.songs.length
-    this.songName = this.songs[this.songIndex].name
-    this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
-    this.song.src = this.filename.link
+    if (this.queue.length > 0) {
+      this.songName = this.queue[0].name
+      this.filename = await this.http.get('/api/link?filepath=' + this.queue[0].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
+      this.song.src = this.filename.link
+      this.queue.shift()
+    } else {
+      this.songIndex++
+      this.songIndex %= this.songs.length
+      this.songName = this.songs[this.songIndex].name
+      this.filename = await this.http.get('/api/link?filepath=' + this.songs[this.songIndex].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
+      this.song.src = this.filename.link
+    }
     setTimeout(()=>{
       this.song.play()
     },1000)
@@ -177,7 +218,12 @@ export class PlayerComponent implements OnDestroy, OnInit {
     }
   }
 
+
+
   async goToSong(songName:string) {
+    if (this.addingToQ || this.queueOpened) {
+      return
+    }
     if (this.listOpened) {
       this.openCloseList()
     }
