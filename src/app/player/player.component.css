@@ -17,7 +17,6 @@ fa-icon:hover {
     padding: 0px;
 }
 .vertical-box {
-    width: 302px;
     display: flex;
     flex-direction: column;
 }
@@ -65,6 +64,7 @@ fa-icon:hover {
 }
 
 #search-bar  {
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 10px 35px;
@@ -91,6 +91,7 @@ fa-icon:hover {
     border: 2px solid #cecdcd;
 }
 #queue-options {
+    width: 100%;
     margin-left: 20px;
     height:100%;
 }
@@ -291,7 +292,7 @@ img {
 }
 
 @media only screen and (max-width:768px) {
-    .vertical-box {width: 290px;}
+    .vertical-box {width: 305px;}
     #queue-options {margin-left: 0px;}
     nav {
         position: fixed;
