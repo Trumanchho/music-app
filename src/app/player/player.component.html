@@ -1,5 +1,10 @@
 <app-loading-screen *ngIf="wait"></app-loading-screen>
 <!-- <app-restricted-page *ngIf="(!loggedIn || !verified) && !wait"></app-restricted-page> -->
+
+<div id="notification" [ngClass]="showNotif ? 'show-notif' : 'hide-notif'">
+    <span>{{notifMessage}}</span>
+</div>
+
 <div class="center" *ngIf="!wait" >
     <div id="player">
         <nav>

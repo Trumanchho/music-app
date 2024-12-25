@@ -55,6 +55,10 @@ export class PlayerComponent implements OnDestroy, OnInit {
   queueOpened:boolean = false
   addingToQ:boolean = false
 
+  showNotif:boolean = false
+  notifMessage:string = ""
+  notifTimer:any
+
   dbx:any
 
   constructor(private ss:SongsService, private bs:BooksService, private us:UsersService,
@@ -121,10 +125,22 @@ export class PlayerComponent implements OnDestroy, OnInit {
   }
 
   enqueueSong(songName:string) {
-    this.queue.push(this.songs.find(song=>song.name === songName))
+    if (this.queue.filter(song=>song.name === songName).length === 0) {
+      if (this.queue.push(this.songs.find(song=>song.name === songName))) {
+        songName = songName.split('-')[1].replace(".mp3","").replace(".m4a","")
+        let msg = "Added \"" + songName + "\" to queue."
+        this.notif(msg)
+      }
+    } else {
+      let msg = "Song has already been queued."
+      this.notif(msg)
+    }
   }
   removeSong(songName:string) {
    this.queue = this.queue.filter(song=>song.name !== songName)
+   songName = songName.split('-')[1].replace(".mp3","").replace(".m4a","")
+   let msg = "Removed \"" + songName + "\" from queue."
+   this.notif(msg)
   }
 
   playPause() {
@@ -218,8 +234,6 @@ export class PlayerComponent implements OnDestroy, OnInit {
     }
   }
 
-
-
   async goToSong(songName:string) {
     if (this.addingToQ || this.queueOpened) {
       return
@@ -278,6 +292,16 @@ export class PlayerComponent implements OnDestroy, OnInit {
     setTimeout(()=>{
       this.hideList = false
     },100)
+  }
+  notif(message:string) {
+    this.notifMessage = message
+    this.showNotif = true
+    if (this.notifTimer) {
+      clearTimeout(this.notifTimer)
+    }
+    this.notifTimer = setTimeout(()=>{
+      this.showNotif = false
+    },2000)
   }
 
 }
