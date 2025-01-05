@@ -22,11 +22,11 @@ export class HomeComponent {
   constructor(private bs:BooksService, private us:UsersService, private ss:SongsService, private router:Router, private http:HttpClient) {
     this.loggedIn = this.us.loggedIn
     if (this.loggedIn && this.us.currentUser.verified) {
-      this.title = "Bookshelf"
+      this.title = "Song Shelf"
       this.books = this.bs.books
       this.currentUser = this.us.currentUser
     } else {
-      this.title = "Bookshelf (DEMO)"
+      this.title = "Song Shelf (DEMO)"
       this.books = this.bs.demoBooks
       if (!this.loggedIn) {
         this.currentUser = new User('DEMO','DEMO',false)
