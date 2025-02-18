@@ -1,7 +1,7 @@
 
 <app-loading-screen *ngIf="wait"></app-loading-screen>
 
-<div id="display">
+<div id="display" *ngIf="!wait">
     <h1>{{title}}</h1>
     <div id="log">
         <p *ngIf="loggedIn">Logged in as: {{currentUser.email}}</p>
