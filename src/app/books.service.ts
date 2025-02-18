@@ -22,7 +22,7 @@ export class BooksService {
     this.books.push(new Book("Hymnal Collection 2023", '/assets/hymnalcollection.jpg'))
     this.books.push(new Book("Hymnal Collection 2023 (Instrumental)", '/assets/hymnalcollection.jpg'))
     this.books.push(new Book("Songs of My Heart 1 (Instrumental)", '/assets/SOMH1.jpg'))
-    this.books.push(new Book("Hymnal Collection 2024", '')) //need cover image for this
+    this.books.push(new Book("Hymnal Collection 2024", '/assets/hymnalcollection24.jpg')) 
 
     //DEMO
     this.demoBooks.push(new Book("All Demo Songs", '/assets/record-player.jpg'))
