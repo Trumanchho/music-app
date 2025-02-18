@@ -40,7 +40,7 @@ export class PlayerComponent implements OnDestroy, OnInit {
   songName:string = ''
   filename:any
   bookName:string = this.ActivatedRoute.snapshot.params["title"]
-  bookImageUrl:string
+  bookImageUrl:string = ''
   shuffleOption:string = "shuffle"
 
   query:string = ''
@@ -67,9 +67,18 @@ export class PlayerComponent implements OnDestroy, OnInit {
     this.loggedIn = this.us.loggedIn
     this.verified = this.us.currentUser.verified
     if (this.loggedIn && this.verified) {
-      this.bookImageUrl =  this.bs.getBook(this.bookName).imageUrl
+      try {
+        this.bookImageUrl =  this.bs.getBook(this.bookName).imageUrl
+      } catch(err) {
+        this.router.navigate(["/books"])
+      }
+      
     } else {
-      this.bookImageUrl = this.bs.getDemoBook(this.bookName).imageUrl
+      try {
+        this.bookImageUrl = this.bs.getDemoBook(this.bookName).imageUrl
+      } catch(err) {
+        this.router.navigate(["/books"])
+      }
     }
   }
 
