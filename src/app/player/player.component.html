@@ -66,7 +66,7 @@
         <table *ngIf="!hideList && !queueOpened && !addingToQ" id="clickable">
             <tr *ngFor="let song of songs | search:query" >
                 <td (click)="goToSong(song.name)">
-                    <span id="song-name">{{ song.name | songName }}</span><span id="light">{{ song.name | pageNumber }}</span> 
+                    <span id="song-name" [ngClass]="(songs[songIndex].name === song.name) ? 'selected' : null">{{ song.name | songName }}</span><span id="light">{{ song.name | pageNumber }}</span> 
                 </td>
             </tr>
         </table>
@@ -76,14 +76,14 @@
             </tr>
             <tr *ngFor="let song of queue" >
                 <td>
-                    <span id="song-name">{{ song.name | songName }}</span><fa-icon [icon]="faMinus" (click)="removeSong(song.name)"></fa-icon> 
+                    <span id="song-name" [ngClass]="(songs[songIndex].name === song.name) ? 'selected' : null">{{ song.name | songName }}</span><fa-icon [icon]="faMinus" (click)="removeSong(song.name)"></fa-icon> 
                 </td>
             </tr>
         </table>
         <table *ngIf="!hideList && !queueOpened && addingToQ">
             <tr *ngFor="let song of songs | search:query" >
                 <td>
-                    <span id="song-name">{{ song.name | songName }}</span><fa-icon [icon]="faPlus" (click)="enqueueSong(song.name)"></fa-icon> 
+                    <span id="song-name" [ngClass]="(songs[songIndex].name === song.name) ? 'selected' : null">{{ song.name | songName }}</span><fa-icon [icon]="faPlus" (click)="enqueueSong(song.name)"></fa-icon> 
                 </td>
             </tr>
         </table>
