@@ -165,6 +165,7 @@ export class PlayerComponent implements OnDestroy, OnInit {
     this.progress.nativeElement.value = 0
     if (this.queue.length > 0) {
       this.songName = this.queue[0].name
+      this.songIndex = this.songs.findIndex(song => song.name === this.songName)
       this.filename = await this.http.get('/api/link?filepath=' + this.queue[0].path_display.replace(new RegExp('/', 'g'), '<>')).toPromise()
       this.song.src = this.filename.link
       this.queue.shift()
