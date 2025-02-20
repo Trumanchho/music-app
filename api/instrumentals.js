@@ -25,9 +25,11 @@ module.exports =  async function (req, res) {
     let sol2 = []
     let hc23 = []
     let somh1 = []
+    let gfh2 = []
     sol1 = (await getSongsFrom("Songs of Love 1 - Instrumental"))
     sol2 = (await getSongsFrom("Songs of Love 2 - Instrumental"))
+    gfh2 = (await getSongsFrom("Hymnal 2 Instrumental"))
     hc23 = (await getSongsFrom("Hymnal Collection 2023 Instrumental"))
     somh1 = (await getSongsFrom("Songs of My Heart 1 2018 - Instrumental"))
-    res.send({sol1: sol1, sol2: sol2, hc23: hc23, somh1: somh1})
+    res.send({sol1: sol1, sol2: sol2, hc23: hc23, somh1: somh1, gfh2: gfh2})
 }

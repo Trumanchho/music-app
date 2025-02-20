@@ -38,6 +38,7 @@ export class SongsService {
       this.songs = this.songs.concat(this.instrumentalData['sol2'])
       this.songs = this.songs.concat(this.instrumentalData['hc23'])
       this.songs = this.songs.concat(this.instrumentalData['somh1'])
+      this.songs = this.songs.concat(this.instrumentalData['gfh2'])
     } else if (title === "Songs of Love 1" ) {
       this.songs = this.songData['sol1']
     } else if  (title === "Hymnal Collection 2023" ) {
@@ -46,6 +47,8 @@ export class SongsService {
       this.songs = this.instrumentalData['hc23']
     } else if  (title === "God's Family Hymnal 2" ) {
       this.songs = this.songData['gfh2']
+    } else if (title === "God's Family Hymnal 2 (Instrumental)")  {
+      this.songs = this.instrumentalData['gfh2']
     } else if  (title === "Songs of Love 2" ) {
       this.songs = this.songData['sol2']
     } else if  (title === "Songs of My Heart 1 (Instrumental)" ) {

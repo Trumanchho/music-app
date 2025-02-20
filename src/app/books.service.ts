@@ -17,6 +17,7 @@ export class BooksService {
     // this.books.push(new Book("Songs of Love 3", '/assets/SOL3.jpg'))
     // this.books.push(new Book("God's Family Hymnal 1", '/assets/GFH1.jpg'))
     this.books.push(new Book("God's Family Hymnal 2", '/assets/GFH2.jpg'))
+    this.books.push(new Book("God's Family Hymnal 2 (Instrumental)", '/assets/GFH2.jpg'))
     // this.books.push(new Book("God's Beautiful Heart", '/assets/GBH.jpg'))
     // this.books.push(new Book("Songs of My Heart 1", '/assets/SOMH1.jpg'))
     this.books.push(new Book("Hymnal Collection 2023", '/assets/hymnalcollection.jpg'))
