@@ -277,7 +277,8 @@ export class PlayerComponent implements OnDestroy, OnInit {
     this.songIndex = -1
     this.songs = this.ss.songs
     this.refreshList()
-    this.goToSong(this.songs[0].name)
+    this.songIndex = 0
+    this.goToSong(this.songs[this.songIndex].name)
   }
   sortByPageSongs() {
     if (this.shuffleOption !== "page") {
@@ -285,7 +286,8 @@ export class PlayerComponent implements OnDestroy, OnInit {
       this.ss.sortSongs("page")
       this.songs = this.ss.songs
       this.refreshList()
-      this.goToSong(this.songs[0].name)
+      this.songIndex = 0
+      this.goToSong(this.songs[this.songIndex].name)
     }
   }
   sortByNameSongs() {
@@ -294,7 +296,8 @@ export class PlayerComponent implements OnDestroy, OnInit {
       this.ss.sortSongs("name")
       this.songs = this.ss.songs
       this.refreshList()
-      this.goToSong(this.songs[0].name)
+      this.songIndex = 0
+      this.goToSong(this.songs[this.songIndex].name)
     }
   }
   refreshList() {
