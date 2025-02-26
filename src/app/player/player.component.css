@@ -302,10 +302,10 @@ img {
 #notification {
     text-align: center;
     vertical-align: middle;
-    line-height: 50px;
+    height: 75px;
+    line-height: 75px;
     color: white;
-    background-color: #489b5c;
-    border-radius: 5px;
+    background-color: #61b975;
     width: 100vw;
     position: fixed;
     bottom: 0;
@@ -363,6 +363,10 @@ img {
     }
     #tint {
         display: block;
+    }
+    #notification {
+        top: 0;
+        pointer-events: none;
     }
 }
 
