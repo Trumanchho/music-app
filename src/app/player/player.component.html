@@ -52,7 +52,7 @@
         <div class="vertical-box" id="song-list-header">
             <div id="search-bar" class="horizontal-box">
                 <label for="search">Search:</label>
-                <input type="text" name="search" id="search" placeholder="Name / Page #" [(ngModel)]="query" >
+                <input type="search" name="search" id="search" placeholder="Name / Page #" [(ngModel)]="query" >
             </div>
             <div id="queue-options" class="horizontal-box">
                 <div [ngClass]="(addingToQ) ? 'q-selected' : 'q-unselected'" (click)="addingToQueue()">
